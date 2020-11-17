@@ -16,8 +16,9 @@ public class FilmeDAO {
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = con.prepareStatement("INSERT INTO FILME (titulo, categoria, sinopse, tempo, imagem3d, dublado) VALUES"
-					+ "(?,?,?,?,?,?)");
+			stmt = con
+					.prepareStatement("INSERT INTO FILME (titulo, categoria, sinopse, tempo, imagem3d, dublado) VALUES"
+							+ "(?,?,?,?,?,?)");
 			stmt.setString(1, f.getTitulo());
 			stmt.setString(2, f.getCategoria());
 			stmt.setString(3, f.getSinopse());
@@ -27,9 +28,9 @@ public class FilmeDAO {
 
 			stmt.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Filme Salvo com sucesso!");
-		} catch(SQLException e) {
-			JOptionPane.showMessageDialog(null, "Erro ao salvar: "+ e);
-		}finally{
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + e);
+		} finally {
 			ConnectionFactory.closeConnection(con, stmt);
 		}
 	}

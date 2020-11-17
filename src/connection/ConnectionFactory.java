@@ -14,7 +14,7 @@ public class ConnectionFactory {
 	private static final String PASS = "";
 	
 	public static Connection getConnection() {
-		try {
+		try {  
 			Class.forName(DRIVER);
 			return DriverManager.getConnection(URL, USER, PASS);
 		} catch (ClassNotFoundException | SQLException e) {

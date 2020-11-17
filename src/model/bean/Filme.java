@@ -6,7 +6,7 @@ public class Filme {
 	private int tempo;
 	private boolean imagem3d;
 	private boolean dublado;
-	private String sinopse;
+	private String sinopse;  
 	private String categoria;
 	public int getIdFilme() {
 		return idFilme;
