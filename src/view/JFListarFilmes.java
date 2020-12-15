@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import model.dao.FilmeDAO;
 import model.bean.Filme;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFListarFilmes extends JFrame {
 
@@ -75,6 +78,19 @@ public class JFListarFilmes extends JFrame {
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//verificar se há linha selecionada
+				if(jtFilme.getSelectedRow()!= -1) {
+					JFAtualizarFilme af = new JFAtualizarFilme(
+							(int)jtFilme.getValueAt(jtFilme.getSelectedRow(), 0));
+					af.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecione um filme!");
+				}
+				readJTable();
+			}
+		});
 		btnAlterar.setBounds(148, 227, 89, 23);
 		contentPane.add(btnAlterar);
 		
