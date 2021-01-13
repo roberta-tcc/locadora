@@ -93,7 +93,7 @@ public class JFListarFilmes extends JFrame {
 		});
 		btnAlterar.setBounds(148, 227, 89, 23);
 		contentPane.add(btnAlterar);
-		
+		 
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {

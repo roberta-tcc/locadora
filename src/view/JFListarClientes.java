@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel; 
+import javax.swing.table.DefaultTableModel;  
 
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
