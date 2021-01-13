@@ -44,7 +44,7 @@ public class JFCadastrarFilme extends JFrame {
 		});
 	}
 
-	/**
+	/** 
 	 * Create the frame.
 	 */
 	public JFCadastrarFilme() {
