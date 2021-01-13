@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
 
+
 import java.awt.Font;
 import javax.swing.JButton;
 
@@ -99,6 +100,26 @@ public class JFListarClientes extends JFrame {
 		contentPane.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(jtCliente.getSelectedRow() != -1) {
+
+					int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o cliente selecionado?"
+							,"Exclusão",JOptionPane.YES_NO_OPTION);
+					if (opcao == 0) {
+						ClienteDAO dao = new ClienteDAO();
+						Cliente f = new Cliente();
+						f.setIdCliente((int) jtCliente.getValueAt(jtCliente.getSelectedRow(), 0));
+						dao.delete(f);
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecione um cliente!");
+				}
+				readJTable();
+			}
+		});
+		
+
 		btnExcluir.setBounds(277, 227, 89, 23);
 		contentPane.add(btnExcluir);
 			
