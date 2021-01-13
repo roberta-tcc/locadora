@@ -70,7 +70,7 @@ public class JFCadastrarCliente extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(118, 63, 231, 24);
+		txtNome.setBounds(118, 65, 204, 14);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		

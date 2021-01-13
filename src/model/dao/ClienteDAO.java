@@ -107,7 +107,7 @@ public class ClienteDAO {
 			}finally {
 				ConnectionFactory.closeConnection(con, stmt);
 			}
-	}
+	} 
 		
 		public void delete(Cliente c) {
 			Connection con = ConnectionFactory.getConnection();
