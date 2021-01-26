@@ -21,6 +21,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowEvent;
 
 public class JFListarClientes extends JFrame {
 
@@ -47,8 +49,15 @@ public class JFListarClientes extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarClientes() {
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				readJTable();
+			}
+			public void windowLostFocus(WindowEvent e) {
+			}
+		});
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Listar Clientes");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -78,6 +87,12 @@ public class JFListarClientes extends JFrame {
 		scrollPane.setViewportView(jtCliente);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarCliente cf = new JFCadastrarCliente();
+				cf.setVisible(true);
+			}
+		});
 		btnCadastrar.setBounds(22, 227, 89, 23);
 		contentPane.add(btnCadastrar);
 		
@@ -96,7 +111,7 @@ public class JFListarClientes extends JFrame {
 			}
 		});
 		
-		btnAlterar.setBounds(149, 227, 89, 23);
+		btnAlterar.setBounds(135, 227, 89, 23);
 		contentPane.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir");
@@ -120,8 +135,17 @@ public class JFListarClientes extends JFrame {
 		});
 		
 
-		btnExcluir.setBounds(277, 227, 89, 23);
+		btnExcluir.setBounds(234, 227, 89, 23);
 		contentPane.add(btnExcluir);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelar.setBounds(333, 227, 89, 23);
+		contentPane.add(btnCancelar);
 			
 		readJTable();
 	}

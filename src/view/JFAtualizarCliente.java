@@ -108,10 +108,23 @@ public class JFAtualizarCliente extends JFrame {
 		sexo.add(rdbtnMasculino);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNome.setText(null);
+				txtCPF.setText(null);
+				sexo.clearSelection();
+				
+			}
+		});
 		btnLimpar.setBounds(161, 207, 89, 23);
 		contentPane.add(btnLimpar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setBounds(287, 207, 89, 23);
 		contentPane.add(btnCancelar);
 		
@@ -122,6 +135,7 @@ public class JFAtualizarCliente extends JFrame {
 			c.setSexo(false);
 		}else if (rdbtnMasculino.isSelected()) {
 			c.setSexo(true);
+			
 		}
 		
 		JButton btnAlterar = new JButton("Alterar");
@@ -142,6 +156,7 @@ public class JFAtualizarCliente extends JFrame {
 				}
 				
 				dao.update(c);
+				dispose();
 			}
 		});
 		

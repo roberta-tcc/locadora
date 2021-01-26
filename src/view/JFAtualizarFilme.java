@@ -207,7 +207,7 @@ public class JFAtualizarFilme extends JFrame {
 				f.setDublado(false);
 			}
 			dao.update(f);
-
+			dispose();
 		}
 	});
 	sl_contentPane.putConstraint(SpringLayout.SOUTH, spTempo, -6, SpringLayout.NORTH, btnAlterar);
@@ -216,12 +216,27 @@ public class JFAtualizarFilme extends JFrame {
 	contentPane.add(btnAlterar);
 
 	JButton btnLimpar = new JButton("Limpar");
+	btnLimpar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+				txtTitulo.setText(null);
+				txtSinopse.setText(null);
+				txtCategoria.setText(null);
+				spTempo.setValue(0);
+				imagem.clearSelection();
+				audio.clearSelection();			
+		}
+	});
 	sl_contentPane.putConstraint(SpringLayout.NORTH, btnAlterar, 0, SpringLayout.NORTH, btnLimpar);
 	sl_contentPane.putConstraint(SpringLayout.WEST, btnLimpar, 0, SpringLayout.WEST, rdbtn2d);
 	sl_contentPane.putConstraint(SpringLayout.SOUTH, btnLimpar, -10, SpringLayout.SOUTH, contentPane);
 	contentPane.add(btnLimpar);
 
 	JButton btnCancelar = new JButton("Cancelar");
+	btnCancelar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+		}
+	});
 	sl_contentPane.putConstraint(SpringLayout.NORTH, btnCancelar, 0, SpringLayout.NORTH, btnLimpar);
 	sl_contentPane.putConstraint(SpringLayout.EAST, btnCancelar, 0, SpringLayout.EAST, txtTitulo);
 	contentPane.add(btnCancelar);

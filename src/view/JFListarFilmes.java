@@ -17,10 +17,11 @@ import model.bean.Filme;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowEvent;
 
 public class JFListarFilmes extends JFrame {
-
-	private JPanel contentPane;
 	private JTable jtFilme;
 
 	/**
@@ -43,10 +44,17 @@ public class JFListarFilmes extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarFilmes() {
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent arg0) {
+				readJTable();
+			}
+			public void windowLostFocus(WindowEvent arg0) {
+			}
+		});
 		setTitle("Listar Filmes");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -74,6 +82,12 @@ public class JFListarFilmes extends JFrame {
 		scrollPane.setViewportView(jtFilme);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarFilme cf = new JFCadastrarFilme();
+				cf.setVisible(true);				
+			}
+		});
 		btnCadastrar.setBounds(20, 227, 89, 23);
 		contentPane.add(btnCadastrar);
 		
@@ -91,7 +105,7 @@ public class JFListarFilmes extends JFrame {
 				readJTable();
 			}
 		});
-		btnAlterar.setBounds(148, 227, 89, 23);
+		btnAlterar.setBounds(119, 227, 89, 23);
 		contentPane.add(btnAlterar);
 		 
 		JButton btnExcluir = new JButton("Excluir");
@@ -114,8 +128,13 @@ public class JFListarFilmes extends JFrame {
 				}
 			});
 				
-		btnExcluir.setBounds(278, 227, 89, 23); 
+		btnExcluir.setBounds(218, 227, 89, 23); 
 		contentPane.add(btnExcluir);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnCancelar.setBounds(317, 227, 89, 23);
+		contentPane.add(btnCancelar);
 		
 		readJTable();
 	}
@@ -134,5 +153,4 @@ public class JFListarFilmes extends JFrame {
 		}
 
 	}
-	
 }
